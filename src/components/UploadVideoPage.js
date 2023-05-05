@@ -18,7 +18,11 @@ export default function UploadVideoPage() {
           };
           formData.append("file", acceptedFiles[0]);
           axios
-            .post("http://localhost:3001/uploadVideo", formData, config)
+            .post(
+              "https://penguin-tube-api.onrender.com/uploadVideo",
+              formData,
+              config
+            )
             .then((response) => {
               if (response.data.success) {
                 let variable = {
@@ -31,9 +35,13 @@ export default function UploadVideoPage() {
                 console.log(variable);
                 //generate thumbnail with this filepath
                 axios
-                  .post("http://localhost:3001/thumbnail", variable, {
-                    withCredentials: true,
-                  })
+                  .post(
+                    "https://penguin-tube-api.onrender.com/thumbnail",
+                    variable,
+                    {
+                      withCredentials: true,
+                    }
+                  )
                   .then((response) => {
                     if (response.data.success) {
                       setThumbnail(response.data.thumbsFilePath);
@@ -63,7 +71,7 @@ export default function UploadVideoPage() {
         <div>
           <img
             key={thumbnail}
-            src={`http://localhost:3001/${thumbnail}`}
+            src={`https://penguin-tube-api.onrender.com/${thumbnail}`}
             alt="Image"
           />
         </div>

@@ -9,13 +9,15 @@ export default function Home() {
   const navigate = useNavigate();
 
   async function loadVids() {
-    const paths = await axios.get("http://localhost:3001/");
+    const paths = await axios.get("https://penguin-tube-api.onrender.com/");
     setVideoPaths(paths.data.paths);
   }
 
   async function getUserProfile() {
     await axios
-      .get("http://localhost:3001/checkAuth", { withCredentials: true })
+      .get("https://penguin-tube-api.onrender.com/checkAuth", {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log("here");
         console.log(response);

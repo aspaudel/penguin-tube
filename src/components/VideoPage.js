@@ -39,7 +39,7 @@ export default function VideoPage() {
     setDisabled(true);
     await axios
       .post(
-        "http://localhost:3001/updateVideoLikes",
+        "https://penguin-tube-api.onrender.com/updateVideoLikes",
         { videoName, value: 1 },
         {
           withCredentials: true,
@@ -65,7 +65,7 @@ export default function VideoPage() {
     setDisabled(true);
     await axios
       .post(
-        "http://localhost:3001/updateVideoLikes",
+        "https://penguin-tube-api.onrender.com/updateVideoLikes",
         { videoName, value: -1 },
         {
           withCredentials: true,
@@ -91,7 +91,7 @@ export default function VideoPage() {
     setDisabled(true);
     await axios
       .post(
-        "http://localhost:3001/getLikeState",
+        "https://penguin-tube-api.onrender.com/getLikeState",
         { videoName },
         {
           withCredentials: true,
@@ -110,7 +110,7 @@ export default function VideoPage() {
     <div className="video-player-holder">
       <video className="video-player" width="320" height="240" controls>
         <source
-          src={`http://localhost:3001/videoPage/${videoName}`}
+          src={`https://penguin-tube-api.onrender.com/videoPage/${videoName}`}
           type="video/mp4"
         />
         Your browser does not support the video tag

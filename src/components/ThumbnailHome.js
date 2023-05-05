@@ -38,7 +38,7 @@ export default function Thumbnail({ videoPath }) {
       <Link to="/videoPage" state={{ videoPath, uploadTime }}>
         <img
           className="home-page-thumbnail"
-          src={`http://localhost:3001/uploads/thumbnails/${videoPath}`}
+          src={`https://penguin-tube-api.onrender.com/uploads/thumbnails/${videoPath}`}
           alt="Image"
         />
       </Link>

@@ -49,7 +49,7 @@ export default function Thumbnail({ videoPath }) {
       console.log("rename: " + videoName);
       await axios
         .post(
-          "http://localhost:3001/renameVideoFile",
+          "https://penguin-tube-api.onrender.com/renameVideoFile",
           {
             oldVideoName: videoName,
             newVideoName: videoNameRef.current.value + ".mp4",
@@ -84,7 +84,7 @@ export default function Thumbnail({ videoPath }) {
       videoName = videoName.substring(0, videoName.length - 3) + "mp4";
       await axios
         .post(
-          "http://localhost:3001/deleteVideoFile",
+          "https://penguin-tube-api.onrender.com/deleteVideoFile",
           {
             videoName,
             thumbnailName: videoname,
@@ -120,7 +120,7 @@ export default function Thumbnail({ videoPath }) {
         <Link to="/videoPage" state={{ videoPath: videoname, uploadTime }}>
           <img
             className="home-page-thumbnail"
-            src={`http://localhost:3001/uploads/thumbnails/${videoPath}`}
+            src={`https://penguin-tube-api.onrender.com/uploads/thumbnails/${videoPath}`}
             alt="Image"
           />
         </Link>

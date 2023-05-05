@@ -10,12 +10,16 @@ export default function ProfilePage() {
 
   async function checkAuth() {
     await axios
-      .get("http://localhost:3001/checkAuth", { withCredentials: true })
+      .get("https://penguin-tube-api.onrender.com/checkAuth", {
+        withCredentials: true,
+      })
       .then(async (response) => {
         console.log(response.status);
         if (response.status === 200) {
           await axios
-            .get("http://localhost:3001/userProfile", { withCredentials: true })
+            .get("https://penguin-tube-api.onrender.com/userProfile", {
+              withCredentials: true,
+            })
             .then((response) => {
               console.log(response);
               if (response.status === 200) {
@@ -36,7 +40,7 @@ export default function ProfilePage() {
     console.log("Account Deletion Initiated...");
 
     await axios
-      .get("http://localhost:3001/masterDeletionAccount", {
+      .get("https://penguin-tube-api.onrender.com/masterDeletionAccount", {
         withCredentials: true,
       })
       .then((response) => {
@@ -51,7 +55,9 @@ export default function ProfilePage() {
 
   const logout = async (req, res) => {
     await axios
-      .get("http://localhost:3001/logout", { withCredentials: true })
+      .get("https://penguin-tube-api.onrender.com/logout", {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

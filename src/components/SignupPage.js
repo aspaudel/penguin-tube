@@ -23,7 +23,7 @@ export default function SignupPage() {
     console.log(e.target.username.value);
     console.log(e.target.password.value);
     await axios
-      .post("http://localhost:3001/signup", signupForm)
+      .post("https://penguin-tube-api.onrender.com/signup", signupForm)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
