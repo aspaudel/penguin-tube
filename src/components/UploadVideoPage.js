@@ -17,42 +17,32 @@ export default function UploadVideoPage() {
             header: { "content-type": "multipart/form-data" },
           };
           formData.append("file", acceptedFiles[0]);
-          axios
-            .post(
-              "https://penguin-tube-api.onrender.com/uploadVideo",
-              formData,
-              config
-            )
-            .then((response) => {
-              if (response.data.success) {
-                let variable = {
-                  filePath: response.data.filePath,
-                  fileName: response.data.fileName,
-                };
+          axios.post("/uploadVideo", formData, config).then((response) => {
+            if (response.data.success) {
+              let variable = {
+                filePath: response.data.filePath,
+                fileName: response.data.fileName,
+              };
 
-                setFileName(response.data.fileName);
+              setFileName(response.data.fileName);
 
-                console.log(variable);
-                //generate thumbnail with this filepath
-                axios
-                  .post(
-                    "https://penguin-tube-api.onrender.com/thumbnail",
-                    variable,
-                    {
-                      withCredentials: true,
-                    }
-                  )
-                  .then((response) => {
-                    if (response.data.success) {
-                      setThumbnail(response.data.thumbsFilePath);
-                    } else {
-                      alert("Failed to make the thumbnails");
-                    }
-                  });
-              } else {
-                alert("Failed to save the video in the server");
-              }
-            });
+              console.log(variable);
+              //generate thumbnail with this filepath
+              axios
+                .post("/thumbnail", variable, {
+                  withCredentials: true,
+                })
+                .then((response) => {
+                  if (response.data.success) {
+                    setThumbnail(response.data.thumbsFilePath);
+                  } else {
+                    alert("Failed to make the thumbnails");
+                  }
+                });
+            } else {
+              alert("Failed to save the video in the server");
+            }
+          });
         }}
       >
         {({ getRootProps, getInputProps }) => (

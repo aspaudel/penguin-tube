@@ -20,16 +20,13 @@ export default function SignupPage() {
 
   async function handleSignup(e) {
     e.preventDefault();
-    console.log(e.target.username.value);
-    console.log(e.target.password.value);
-    await axios
-      .post("https://penguin-tube-api.onrender.com/signup", signupForm)
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          navigate("/loginPage");
-        }
-      });
+
+    await axios.post("/signup", signupForm).then((response) => {
+      console.log(response);
+      if (response.status === 200) {
+        navigate("/loginPage");
+      }
+    });
   }
 
   return (

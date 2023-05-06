@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import Thumbnail from "./Thumbnail";
 import axios from "axios";
 
@@ -10,14 +10,14 @@ export default function ProfilePage() {
 
   async function checkAuth() {
     await axios
-      .get("https://penguin-tube-api.onrender.com/checkAuth", {
+      .get("/checkAuth", {
         withCredentials: true,
       })
       .then(async (response) => {
         console.log(response.status);
         if (response.status === 200) {
           await axios
-            .get("https://penguin-tube-api.onrender.com/userProfile", {
+            .get("/userProfile", {
               withCredentials: true,
             })
             .then((response) => {
@@ -40,7 +40,7 @@ export default function ProfilePage() {
     console.log("Account Deletion Initiated...");
 
     await axios
-      .get("https://penguin-tube-api.onrender.com/masterDeletionAccount", {
+      .get("/masterDeletionAccount", {
         withCredentials: true,
       })
       .then((response) => {
@@ -55,7 +55,7 @@ export default function ProfilePage() {
 
   const logout = async (req, res) => {
     await axios
-      .get("https://penguin-tube-api.onrender.com/logout", {
+      .get("/logout", {
         withCredentials: true,
       })
       .then((response) => {
@@ -76,6 +76,8 @@ export default function ProfilePage() {
             </div>
           );
         })}
+      <Link to="/uploadVideo">UploadVideo</Link>
+      <br></br>
       <button onClick={logout}>Logout</button>
       <br></br>
       {!masterDelete && (

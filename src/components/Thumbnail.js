@@ -49,7 +49,7 @@ export default function Thumbnail({ videoPath }) {
       console.log("rename: " + videoName);
       await axios
         .post(
-          "https://penguin-tube-api.onrender.com/renameVideoFile",
+          "/renameVideoFile",
           {
             oldVideoName: videoName,
             newVideoName: videoNameRef.current.value + ".mp4",
@@ -84,7 +84,7 @@ export default function Thumbnail({ videoPath }) {
       videoName = videoName.substring(0, videoName.length - 3) + "mp4";
       await axios
         .post(
-          "https://penguin-tube-api.onrender.com/deleteVideoFile",
+          "/deleteVideoFile",
           {
             videoName,
             thumbnailName: videoname,

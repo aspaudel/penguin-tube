@@ -39,7 +39,7 @@ export default function VideoPage() {
     setDisabled(true);
     await axios
       .post(
-        "https://penguin-tube-api.onrender.com/updateVideoLikes",
+        "/updateVideoLikes",
         { videoName, value: 1 },
         {
           withCredentials: true,
@@ -65,7 +65,7 @@ export default function VideoPage() {
     setDisabled(true);
     await axios
       .post(
-        "https://penguin-tube-api.onrender.com/updateVideoLikes",
+        "/updateVideoLikes",
         { videoName, value: -1 },
         {
           withCredentials: true,
@@ -91,7 +91,7 @@ export default function VideoPage() {
     setDisabled(true);
     await axios
       .post(
-        "https://penguin-tube-api.onrender.com/getLikeState",
+        "/getLikeState",
         { videoName },
         {
           withCredentials: true,

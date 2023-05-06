@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   async function isLoggedIn() {
     await axios
-      .get("https://penguin-tube-api.onrender.com/checkAuth", {
+      .get("/checkAuth", {
         withCredentials: true,
       })
       .then((response) => {
@@ -36,10 +36,8 @@ export default function LoginPage() {
 
   async function handleLogin(e) {
     e.preventDefault();
-    console.log(e.target.username.value);
-    console.log(e.target.password.value);
     await axios
-      .post("https://penguin-tube-api.onrender.com/login", loginForm, {
+      .post("/login", loginForm, {
         withCredentials: true,
       })
       .then((response) => {
