@@ -33,6 +33,7 @@ export default function UploadVideoPage() {
       />
       <div className="upload-video-form">
         <h1>Upload a Video here</h1>
+        <p>Wait for the thumbnail to appear after uploading the video</p>
         <Dropzone
           onDrop={(acceptedFiles) => {
             let formData = new FormData();
