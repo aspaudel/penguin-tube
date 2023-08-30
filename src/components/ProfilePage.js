@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Thumbnail from "./Thumbnail";
 import axios from "axios";
+import TopLevelComponent from "./TopLevelComponent";
 
 export default function ProfilePage() {
   const navigate = useNavigate();
@@ -68,20 +69,30 @@ export default function ProfilePage() {
 
   return (
     <div>
-      {videoPaths.length !== 0 &&
-        videoPaths.map((videoPath) => {
-          return (
-            <div key={videoPath}>
-              <Thumbnail videoPath={videoPath} />
-            </div>
-          );
-        })}
-      <Link to="/uploadVideo">UploadVideo</Link>
-      <br></br>
-      <button onClick={logout}>Logout</button>
-      <br></br>
+      <TopLevelComponent
+        shouldDisplayLoadVideos={false}
+        shouldDisplayLoginButton={false}
+        logout={logout}
+      />
+      <div className="thumbnail-flex-container">
+        {videoPaths.length !== 0 &&
+          videoPaths.map((videoPath) => {
+            return (
+              <div key={videoPath}>
+                <Thumbnail videoPath={videoPath} />
+              </div>
+            );
+          })}
+        <Link className="uploadVideo" to="/uploadVideo">
+          <div>
+            <p className="add-video-sign">+</p>
+          </div>
+        </Link>
+      </div>
+
       {!masterDelete && (
         <button
+          className="account-master-deletion"
           onClick={() => {
             setMasterDelete(true);
           }}

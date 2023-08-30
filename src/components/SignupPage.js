@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import logo from "../assets/icons/Logo.png";
 
 export default function SignupPage() {
   const [signupForm, setSignupForm] = useState({
@@ -30,35 +31,45 @@ export default function SignupPage() {
   }
 
   return (
-    <form onSubmit={handleSignup}>
-      <h1>Signup</h1>
-      <label>
-        Username:
-        <input
-          value={signupForm.userName}
-          onChange={updateSignupForm}
-          name="username"
-          type="text"
-          required
-        />
-      </label>
-      <br></br>
-      <label>
-        Password:{" "}
-        <input
-          value={signupForm.password}
-          onChange={updateSignupForm}
-          name="password"
-          type="password"
-          required
-        />
-      </label>
-      <br></br>
-      <br></br>
-      <button>Signup</button>
-      <br></br>
-      <br></br>
-      <Link to="/loginPage">Login</Link>
+    <form class="signin-form" onSubmit={handleSignup}>
+      <div class="signin-form-components">
+        <div class="form-header">
+          <img class="penguin-logo" src={logo}></img>
+          <h1>Create a Penguin Account</h1>
+        </div>
+        <div class="input-fields">
+          <div class="input-contain">
+            <input
+              onChange={updateSignupForm}
+              value={signupForm.username}
+              name="username"
+              type="text"
+            />
+            <label class="placeholder-text">
+              <div class="text">Username</div>
+            </label>
+          </div>
+
+          <br></br>
+
+          <div class="input-contain">
+            <input
+              onChange={updateSignupForm}
+              value={signupForm.password}
+              name="password"
+              type="password"
+            />
+            <label class="placeholder-text">
+              <div class="text">Password</div>
+            </label>
+          </div>
+        </div>
+        <br></br>
+        <div class="login-signup-bundle">
+          <Link to="/loginPage">Already registered?</Link>
+          <button>Sign up</button>
+        </div>
+      </div>
     </form>
   );
 }

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import TopLevelComponent from "./TopLevelComponent";
+import likeIcon from "../assets/icons/like_icon.svg";
+import dislikeIcon from "../assets/icons/dislike_icon.svg";
 
-export default function VideoPage() {
-  const { videoPath, uploadTime } = useLocation().state;
+export default function VideoPage(props) {
+  const navigate = useNavigate();
+  const { videoPath, uploadTime, displayName } = useLocation().state;
   const [likes, setVideoLikes] = useState("9999");
   const [isLiked, setLiked] = useState(false);
   const [isDisabled, setDisabled] = useState(false);
@@ -106,30 +110,63 @@ export default function VideoPage() {
       });
   }
 
-  return (
-    <div className="video-player-holder">
-      <video className="video-player" width="320" height="240" controls>
-        <source
-          src={`https://penguin-tube-api.onrender.com/videoPage/${videoName}`}
-          type="video/mp4"
-        />
-        Your browser does not support the video tag
-      </video>
-      <div className="video-info">
-        <p>{uploadTime}</p>
-        <div className="likes-holder">
-          <p>{likes}</p>
-          {isLiked && (
-            <button disabled={isDisabled} onClick={dislikeVideo}>
-              Dislike
-            </button>
-          )}
+  const logout = async (req, res) => {
+    await axios
+      .get("/logout", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          navigate("/");
+        }
+      });
+  };
 
-          {!isLiked && (
-            <button disabled={isDisabled} onClick={likeVideo}>
-              Like
-            </button>
-          )}
+  return (
+    <div>
+      <TopLevelComponent
+        shouldDisplayLoadVideos={false}
+        shouldDisplayLoginButton={false}
+        logout={logout}
+      />
+      <div className="video-player-holder">
+        <video className="video-player" controls>
+          <source
+            src={`https://penguin-tube-api.onrender.com/videoPage/${videoName}`}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag
+        </video>
+        <div className="video-info">
+          <div>
+            <p className="videoTitle">{displayName}</p>
+            <p className="videoTime">{uploadTime}</p>
+          </div>
+          <div className="likes-holder">
+            <p>{likes}</p>
+            {isLiked && (
+              <button
+                className="like-dislike-button"
+                disabled={isDisabled}
+                onClick={dislikeVideo}
+              >
+                <img src={dislikeIcon}></img>
+                Dislike
+              </button>
+            )}
+
+            {!isLiked && (
+              <button
+                disabled={isDisabled}
+                onClick={likeVideo}
+                class="like-dislike-button"
+              >
+                <img src={likeIcon}></img>
+                Like
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

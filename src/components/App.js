@@ -1,6 +1,5 @@
 import UploadVideoPage from "./UploadVideoPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "../App.css";
 import Home from "./Home";
 import VideoPage from "./VideoPage";
 import LoginPage from "./LoginPage";

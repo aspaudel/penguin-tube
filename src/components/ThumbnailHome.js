@@ -77,7 +77,7 @@ export default function Thumbnail({ videoPath }) {
 
   return (
     <div>
-      <Link to="/videoPage" state={{ videoPath, uploadTime }}>
+      <Link to="/videoPage" state={{ videoPath, uploadTime, displayName }}>
         <img
           className="home-page-thumbnail"
           src={`https://penguin-tube-api.onrender.com/uploads/thumbnails/${videoPath}`}
@@ -85,7 +85,7 @@ export default function Thumbnail({ videoPath }) {
         />
       </Link>
       <p className="videoTitle">{displayName}</p>
-      <p>{uploadTime}</p>
+      <p className="videoTime">{uploadTime}</p>
     </div>
   );
 }

@@ -1,5 +1,7 @@
-.file-dropper {
-  cursor: pointer;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
 .home-page-thumbnail {
@@ -12,17 +14,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -80px
 }
 
 .video-player {
-  width: 31vw;
+  width: 50vw;
 }
 
 .video-info {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
-  width: 31vw;
+  width: 50vw;
 }
 
 .likes-holder {
@@ -36,11 +39,329 @@
 }
 
 .remove-alert {
+  width: 150px;
   margin: 0;
   color: red;
 }
 
 .videoTitle {
+  margin-top: 3px;
   font-weight: bolder;
   font-size: larger;
+  margin-bottom: -13px;
+}
+
+.videoTime {
+  font-size: 14px;
+  color: #8D8D8D;
+}
+
+.penguin-logo {
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+}
+
+.signin-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 7px;
+}
+
+.signin-text {
+  margin: 0;
+}
+
+.top-level-component {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.load-videos-button {
+  cursor: pointer;
+  background-color: #01A1EE;
+  border: none;
+  height: 50px;
+  width: 120px;
+  border-radius: 15px;
+  font-weight: 800;
+  box-shadow: 0 0 3px 2px rgba(52, 152, 219, 0.5);
+}
+
+.load-videos-button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.signin-group {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  height: 35px;
+  padding: 0.5px 10px;
+  border-radius: 30px;
+}
+
+.thumbnail-flex-container {
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-left: 50px;
+}
+
+.uploadVideo {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  width: 320px;
+  height: 240px;
+  border: 1px dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-video-sign {
+  font-size: 125px;
+}
+
+.account-master-deletion {
+  cursor: pointer;
+  background-color: #D90000;
+  border: none;
+  height: 50px;
+  width: 150px;
+  border-radius: 15px;
+  font-weight: 800;
+  box-shadow: 0 0 3px 2px rgba(52, 152, 219, 0.5);
+  margin-left: 100px;
+}
+
+.account-master-deletion:hover {
+  outline: none;
+  box-shadow: none;
+}
+
+.login-signup-bundle {
+  margin-top: 50px;
+  width: 340px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-signup-bundle a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #2474FF;
+  font-style: 800;
+}
+
+.login-signup-bundle a:hover {
+  color: #0850cd;
+}
+
+.login-signup-bundle button {
+  cursor: pointer;
+  background-color: #2474FF;
+  color: white;
+  border: none;
+  height: 30px;
+  width: 70px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.login-signup-bundle button:hover {
+  background-color: #0850cd;
+}
+
+.signin-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 430px;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 10px;
+}
+
+.signin-form-components h1{
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.input-contain {
+  position: relative;
+}
+
+input {
+  height: 2.5rem;
+  width: 20rem;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+}
+
+.placeholder-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 3px solid transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.text {
+  font-size: 1.0rem;
+  padding: 0 0.1rem;
+  background-color: transparent;
+  color: rgb(109, 109, 109);
+  transform: translate(0);
+  transition: transform 0.15s ease-out, font-size 0.15s ease-out,background-color 0.2s ease-out, color 0.15s ease-out;
+}
+
+input, .placeholder-text {
+  font-size: 1.0rem;
+  padding: 0 0.7rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgb(13, 146, 255);
+}
+
+input:focus + .placeholder-text .text, :not(input[value=""]) + .placeholder-text .text {
+  background-color: white;
+  font-size: 0.8rem;
+  color: black;
+  transform: translate(-10%, -150%);
+}
+
+input:focus + .placeholder-text .text {
+  
+  border-color: rgb(13, 146, 255);
+  color: rgb(13, 146, 255);
+}
+
+.input-fields {
+  margin-top: 50px;
+}
+
+.upload-video-form {
+  height: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-video-form h1 {
+  margin-bottom: 200px;
+}
+
+.file-dropper {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.like-dislike-button {
+  cursor: pointer;
+  width: 60px;
+  height: 70px;
+}
+
+.dot-menu {
+  cursor: pointer;
+  transform: rotate(90deg);
+  height: 25px;
+  width: 25px;
+}
+
+.video-options {
+  display: flex;
+  justify-content: space-between;
+  width: 330px;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  border-radius: 10px;
+  height: 90px;
+  position: absolute;
+  top: 100%;
+  left: 95% ;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  z-index: 1;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dot-menu:hover + .dropdown-content {
+  display: block;
+}
+
+.dropdown-content:hover {
+  display: block;
+}
+
+.rename-delete-cluster {
+  display: flex;
+  align-items: center;
+  width: 140px;
+}
+
+.rename-delete-cluster  p {
+  margin-top: 12px;
+  margin-left: 20px;
+}
+
+.rename-delete-cluster img {
+  margin-left: 20px;
+}
+
+.rename-delete-cluster:hover {
+  cursor: pointer;
+  background-color: #01A1EE;
+  border-radius: 10px;
+}
+
+.rename-delete-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.progress-bar-fill {
+  height: 40px;
+  background-color: black;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 40px;
+  border: 2px solid black;
 }

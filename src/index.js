@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
+import "./App.css";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import axios from "axios";
 

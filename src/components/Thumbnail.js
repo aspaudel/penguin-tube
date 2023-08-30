@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import dotMenu from "../assets/icons/dot_menu_more_option_icon.png";
+import editIcon from "../assets/icons/create_edit_pencil_write_icon.png";
+import deleteIcon from "../assets/icons/delete_ic_icon.png";
 
 export default function Thumbnail({ videoPath }) {
   const [uploadTime, setUploadTime] = useState("Upload Time");
@@ -159,49 +162,68 @@ export default function Thumbnail({ videoPath }) {
   if (!deleted) {
     return (
       <div>
-        <Link to="/videoPage" state={{ videoPath: videoname, uploadTime }}>
+        <Link
+          to="/videoPage"
+          state={{ videoPath: videoname, uploadTime, displayName }}
+        >
           <img
             className="home-page-thumbnail"
             src={`https://penguin-tube-api.onrender.com/uploads/thumbnails/${videoPath}`}
             alt="Image"
           />
         </Link>
-        <p className="videoTitle">{displayName}</p>
-        <br></br>
-        {rename && (
-          <form onSubmit={renameVideoFile}>
-            <label>
-              New Video Name:
-              <input
-                ref={videoNameRef}
-                type="text"
-                name="newVideoName"
-                required
-              />
-            </label>
-            <button>Rename</button>
-            <button onClick={cancelRename}>Cancel</button>
-            {/* <p className="rename-alert">
+        <div class="video-options">
+          <p className="videoTitle">{displayName}</p>
+          <img className="dot-menu" src={dotMenu}></img>
+          <div className="dropdown-content">
+            {rename && (
+              <form onSubmit={renameVideoFile}>
+                <label>
+                  New Video Name:
+                  <input
+                    ref={videoNameRef}
+                    type="text"
+                    name="newVideoName"
+                    required
+                  />
+                </label>
+                <button>Rename</button>
+                <button onClick={cancelRename}>Cancel</button>
+                {/* <p className="rename-alert">
               Don't use a space or any special character in the name!
             </p> */}
-          </form>
-        )}
-        {remove && (
-          <form onSubmit={removeVideoFile}>
-            <p className="remove-alert">
-              Are you sure you want to delete this video?
-            </p>
-            <button>Delete</button>
-            <button onClick={cancelRemove}>Cancel</button>
-          </form>
-        )}
-        {!rename && !remove && (
-          <div>
-            <button onClick={renameVideoFile}>Rename</button>
-            <button onClick={removeVideoFile}>Delete</button>
+              </form>
+            )}
+            {remove && (
+              <form onSubmit={removeVideoFile}>
+                <p className="remove-alert">
+                  Are you sure you want to delete this video?
+                </p>
+                <button>Delete</button>
+                <button onClick={cancelRemove}>Cancel</button>
+              </form>
+            )}
+            {!rename && !remove && (
+              <div>
+                <div
+                  className="rename-delete-cluster"
+                  onClick={renameVideoFile}
+                >
+                  <img className="rename-delete-icon" src={editIcon}></img>
+                  <p>Rename</p>
+                </div>
+                <div
+                  className="rename-delete-cluster"
+                  onClick={removeVideoFile}
+                >
+                  <img className="rename-delete-icon" src={deleteIcon}></img>
+                  <p>Delete</p>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-        <p>{uploadTime}</p>
+        </div>
+        <p className="videoTime">{uploadTime}</p>
       </div>
     );
   } else {

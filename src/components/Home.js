@@ -2,6 +2,7 @@ import React, { useCallback, useState, useRef } from "react";
 import axios from "axios";
 import ThumbnailHome from "./ThumbnailHome";
 import { useNavigate } from "react-router-dom";
+import TopLevelComponent from "./TopLevelComponent";
 
 export default function Home() {
   const [videoNumber, setVideoNumber] = useState(0);
@@ -65,22 +66,25 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Server Videos</h1>
-      <button onClick={getUserProfile}>Profile</button>
-      <br></br>
-      <button onClick={loadVids}>Load Videos</button>
-      {videoPaths.length !== 0 &&
-        videoPaths.map((videoPath, index) => {
-          if (videoPaths.length === index + 1) {
-            return (
-              <div ref={lastThumbnailElementRef} key={videoPath}>
-                <ThumbnailHome videoPath={videoPath} />
-              </div>
-            );
-          } else {
-            return <ThumbnailHome key={videoPath} videoPath={videoPath} />;
-          }
-        })}
+      <TopLevelComponent getUserProfile={getUserProfile} loadVids={loadVids} />
+      <div className="thumbnail-flex-container">
+        {videoPaths.length !== 0 &&
+          videoPaths.map((videoPath, index) => {
+            if (videoPaths.length === index + 1) {
+              return (
+                <div ref={lastThumbnailElementRef} key={videoPath}>
+                  <ThumbnailHome videoPath={videoPath} />
+                </div>
+              );
+            } else {
+              return (
+                <div>
+                  <ThumbnailHome key={videoPath} videoPath={videoPath} />
+                </div>
+              );
+            }
+          })}
+      </div>
       {isLoading && <p>Loading...</p>}
     </div>
   );
